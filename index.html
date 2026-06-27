@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Carenna Johnson | Accounting & Finance</title>
+  <meta name="description" content="Carenna Johnson — CPA-track Master of Accounting student at Tulane University with experience in financial reconciliation, accounts receivable, and team leadership." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
@@ -65,6 +66,31 @@
     }
 
     .nav-links a:hover { color: var(--teal-light); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s;
+      transform-origin: center;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
     #hero {
       min-height: 100vh;
@@ -164,28 +190,11 @@
       width: 280px; height: 340px;
       border-radius: 16px;
       object-fit: cover;
+      object-position: center top;
       box-shadow: 0 24px 60px rgba(0,0,0,0.4);
       border: 3px solid rgba(255,255,255,0.12);
       display: block;
     }
-
-    .hero-photo-placeholder {
-      width: 280px; height: 340px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.06);
-      border: 2px dashed rgba(255,255,255,0.2);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      color: rgba(255,255,255,0.4);
-      font-size: 0.8rem;
-      text-align: center;
-      padding: 2rem;
-    }
-
-    .hero-photo-placeholder .ph-icon { font-size: 2.5rem; }
 
     section { padding: 96px 5%; }
     .section-header { text-align: center; margin-bottom: 4rem; }
@@ -194,20 +203,16 @@
     .section-divider { width: 48px; height: 3px; background: var(--teal); margin: 1rem auto 0; border-radius: 2px; }
 
     #about { background: var(--white); }
-
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; max-width: 1100px; margin: 0 auto; }
-
     .about-text p { color: var(--text-muted); font-size: 1.025rem; line-height: 1.8; margin-bottom: 1.25rem; }
     .about-text p:last-child { margin-bottom: 0; }
     .about-highlights { display: grid; gap: 1.25rem; }
-
     .highlight-card { background: var(--bg); border-radius: 10px; padding: 1.25rem 1.5rem; border-left: 3px solid var(--teal); }
     .highlight-card h4 { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.35rem; }
     .highlight-card p { font-size: 0.95rem; color: var(--text); font-weight: 500; }
 
     #education { background: var(--bg); }
     .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.75rem; max-width: 1000px; margin: 0 auto; }
-
     .edu-card { background: var(--white); border-radius: 12px; padding: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border-top: 4px solid var(--teal); transition: transform 0.2s, box-shadow 0.2s; }
     .edu-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(0,0,0,0.1); }
     .edu-school { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.5rem; }
@@ -224,22 +229,7 @@
     .timeline::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: var(--border); }
     .timeline-item { display: flex; gap: 2rem; margin-bottom: 2.5rem; position: relative; }
     .timeline-item:last-child { margin-bottom: 0; }
-
-    .timeline-dot {
-      flex-shrink: 0;
-      width: 42px; height: 42px;
-      border-radius: 50%;
-      background: var(--navy);
-      border: 3px solid var(--white);
-      box-shadow: 0 0 0 2px var(--teal);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      position: relative;
-      z-index: 1;
-    }
-
+    .timeline-dot { flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%; background: var(--navy); border: 3px solid var(--white); box-shadow: 0 0 0 2px var(--teal); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; position: relative; z-index: 1; }
     .timeline-content { flex: 1; background: var(--bg); border-radius: 10px; padding: 1.5rem; margin-top: 4px; }
     .job-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.25rem; }
     .job-title { font-weight: 700; font-size: 1.05rem; color: var(--navy); }
@@ -265,25 +255,9 @@
     #contact .section-divider { background: var(--teal-light); }
     .contact-subtitle { color: rgba(255,255,255,0.65); font-size: 1.05rem; max-width: 500px; margin: 1.5rem auto 2.5rem; }
     .contact-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 3rem; }
-
-    .contact-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      padding: 12px 24px;
-      border-radius: 8px;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.15);
-      color: var(--white);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: all 0.2s;
-    }
-
+    .contact-link { display: inline-flex; align-items: center; gap: 0.6rem; padding: 12px 24px; border-radius: 8px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15); color: var(--white); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: all 0.2s; }
     .contact-link:hover { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.3); transform: translateY(-2px); }
     .contact-link svg { width: 16px; height: 16px; flex-shrink: 0; }
-
     .interests-strip { margin-top: 3rem; padding-top: 2.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
     .interests-strip p { font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 1rem; }
     .interests-list { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.75rem; }
@@ -292,9 +266,24 @@
     footer { background: #111a2e; text-align: center; padding: 1.5rem; font-size: 0.8rem; color: rgba(255,255,255,0.3); }
 
     @media (max-width: 900px) { .hero-photo-wrap { display: none; } }
+
     @media (max-width: 768px) {
       .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 64px; left: 0; right: 0;
+        background: rgba(26, 39, 68, 0.98);
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        padding: 1rem 0;
+        border-top: 1px solid rgba(255,255,255,0.1);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; text-align: center; }
+      .nav-links a { display: block; padding: 1rem; font-size: 1rem; }
       section { padding: 72px 6%; }
       .timeline::before { display: none; }
       .hero-stats { gap: 1.5rem; }
@@ -305,7 +294,10 @@
 
   <nav>
     <a href="#hero" class="nav-logo">CJ</a>
-    <ul class="nav-links">
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#experience">Experience</a></li>
@@ -315,19 +307,9 @@
   </nav>
 
   <section id="hero">
-    <!--
-      TO ADD YOUR PHOTO:
-      1. Upload a file named photo.jpg to this repo
-      2. Delete the div.hero-photo-placeholder block below
-      3. Replace it with: <img src="photo.jpg" alt="Carenna Johnson" class="hero-photo">
-    -->
     <div class="hero-photo-wrap">
-      <div class="hero-photo-placeholder">
-        <div class="ph-icon">📷</div>
-        <p>Upload <code>photo.jpg</code><br>to add your photo</p>
-      </div>
+      <img src="photo.jpg" alt="Carenna Johnson" class="hero-photo">
     </div>
-
     <div class="hero-content">
       <span class="hero-tag">Accounting &amp; Finance</span>
       <h1 class="hero-name">Carenna Johnson</h1>
@@ -417,7 +399,6 @@
       <div class="section-divider"></div>
     </div>
     <div class="timeline">
-
       <div class="timeline-item">
         <div class="timeline-dot">💼</div>
         <div class="timeline-content">
@@ -434,7 +415,6 @@
           </ul>
         </div>
       </div>
-
       <div class="timeline-item">
         <div class="timeline-dot">🍹</div>
         <div class="timeline-content">
@@ -450,7 +430,6 @@
           </ul>
         </div>
       </div>
-
       <div class="timeline-item">
         <div class="timeline-dot">⚓</div>
         <div class="timeline-content">
@@ -466,7 +445,6 @@
           </ul>
         </div>
       </div>
-
       <div class="timeline-item">
         <div class="timeline-dot">🛒</div>
         <div class="timeline-content">
@@ -482,7 +460,6 @@
           </ul>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -573,6 +550,21 @@
   <footer>
     <p>&copy; 2026 Carenna Johnson · Arlington, VA</p>
   </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
+  </script>
 
 </body>
 </html>
